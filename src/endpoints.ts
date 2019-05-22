@@ -13,3 +13,8 @@ export const Scenes = {
   LIST_SCENES: ({ projectId }) =>
     `https://playcanvas.com/api/projects/${projectId}/scenes`
 };
+
+export const Branches = {
+  LIST_BRANCHES: ({ projectId }) =>
+    `https://playcanvas.com/api/projects/${projectId}/branches`
+};
