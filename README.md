@@ -49,7 +49,7 @@ const playcanvas = new PlayCanvas(options);
 
 - [ ] List branches
 ### Jobs
-- [ ] Get job
+- [x] Get job
   
 ### Projects
 
