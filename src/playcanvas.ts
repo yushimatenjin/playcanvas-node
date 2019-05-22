@@ -1,6 +1,6 @@
 import axios from "axios";
 import { PlayCanvasOptions } from "./interfaces";
-import {Assets} from './endpoints'
+import { Assets, Jobs } from "./endpoints";
 export default class PlayCanvas {
   accessToken: string;
   scenes?: Array<number>;
@@ -10,38 +10,57 @@ export default class PlayCanvas {
   resourceUrl?: string;
   assetId?: string;
   headers: {
-    "Authorization": string;
-    "Content-Type": string
-  }
+    Authorization: string;
+    "Content-Type": string;
+  };
 
   constructor({
     accessToken,
     scenes,
     projectId,
     branchId,
-    projectName,
+    projectName
   }: PlayCanvasOptions) {
     this.accessToken = accessToken;
     this.scenes = scenes;
     this.projectId = projectId;
     this.branchId = branchId;
     this.projectName = projectName;
-    this.headers =       {
-        "Authorization": `Bearer ${this.accessToken}`,
-        "Content-Type": "application/json"
-      }
+    this.headers = {
+      Authorization: `Bearer ${this.accessToken}`,
+      "Content-Type": "application/json"
+    };
   }
-
+  async getJob() {
+    try {
+      const response = await axios.get(
+        Jobs.GET_JOBS({ projectId: this.projectId }),
+        { headers: this.headers }
+      );
+      return response.data;
+    } catch (error) {
+      return error;
+    }
+  }
   async listAssets() {
-    const response = await axios.get(Assets.LIST_ASSETS({projectId:this.projectId,branchId:this.branchId}), {
-       headers:this.headers 
-    });
+    const response = await axios.get(
+      Assets.LIST_ASSETS({
+        projectId: this.projectId,
+        branchId: this.branchId
+      }),
+      {
+        headers: this.headers
+      }
+    );
     return response.data;
   }
-  async getAssets(assetId){
-    const response = await axios.get(Assets.GET_ASSETS({assetId:assetId,branchId:this.branchId}), {
-        headers:this.headers 
-     });
-     return response.data;
+  async getAssets(assetId) {
+    const response = await axios.get(
+      Assets.GET_ASSETS({ assetId: assetId, branchId: this.branchId }),
+      {
+        headers: this.headers
+      }
+    );
+    return response.data;
   }
 }

@@ -4,3 +4,7 @@ export const Assets = {
   GET_ASSETS: ({ assetId, branchId }) =>
     `https://playcanvas.com/api/assets/${assetId}?branchId=${branchId}`
 };
+
+export const Jobs = {
+  GET_JOBS: ({ projectId }) => `https://playcanvas.com/api/jobs/${projectId}`
+};
