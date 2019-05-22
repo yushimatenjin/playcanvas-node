@@ -1,6 +1,6 @@
 import axios from "axios";
 import { PlayCanvasOptions } from "./interfaces";
-import { Assets, Jobs,Scenes } from "./endpoints";
+import { Assets, Jobs, Branches, Scenes } from "./endpoints";
 export default class PlayCanvas {
   accessToken: string;
   scenes?: Array<number>;
@@ -31,7 +31,7 @@ export default class PlayCanvas {
       "Content-Type": "application/json"
     };
   }
- // Assets
+  // Assets
   async listAssets() {
     const response = await axios.get(
       Assets.LIST_ASSETS({
@@ -53,8 +53,20 @@ export default class PlayCanvas {
     );
     return response.data;
   }
-// Jobs
-async getJob() {
+  // Branches
+  async listBranches() {
+    try {
+      const response = await axios.get(
+        Branches.LIST_BRANCHES({ projectId: this.projectId }),
+        { headers: this.headers }
+      );
+      return response.data;
+    } catch (error) {
+      return error;
+    }
+  }
+  // Jobs
+  async getJob() {
     try {
       const response = await axios.get(
         Jobs.GET_JOBS({ projectId: this.projectId }),
@@ -66,8 +78,8 @@ async getJob() {
     }
   }
 
-// Scenes
-async listScenes() {
+  // Scenes
+  async listScenes() {
     try {
       const response = await axios.get(
         Scenes.LIST_SCENES({ projectId: this.projectId }),
