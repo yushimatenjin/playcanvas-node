@@ -1,0 +1,38 @@
+{
+  "name": "playcanvas-node",
+  "version": "1.0.0",
+  "description": "PlayCanvas node.js bindings",
+  "main": "built/index.js",
+  "types": "built/index.d.ts",
+  "repository": "git@github.com:yushimatenjin/playcanvas-node.git",
+  "author": "yushimatenjin <example@example.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "npm run build && ./node_modules/.bin/mocha --compilers js:espower-babel/guess test/**/*.js",
+    "build": "tsc",
+    "lint": "./node_modules/eslint/bin/eslint.js src",
+    "prepublish": "npm run build"
+  },
+  "devDependencies": {
+    "@types/superagent": "^3.8.0",
+    "babel-cli": "^6.4.5",
+    "babel-core": "^6.4.5",
+    "babel-eslint": "^7.2.3",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.4.5",
+    "babel-preset-es2015": "^6.3.13",
+    "eslint": "^3.19.0",
+    "espower-babel": "^4.0.1",
+    "mocha": "^3.3.0",
+    "power-assert": "^1.1.0",
+    "pre-commit": "^1.1.2",
+    "typescript": "^2.9.2"
+  },
+  "dependencies": {
+    "superagent": "^3.5.2"
+  },
+  "pre-commit": [
+    "lint"
+  ]
+}
