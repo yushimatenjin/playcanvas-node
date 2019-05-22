@@ -41,7 +41,7 @@ const playcanvas = new PlayCanvas(options);
 - [ ] Create asset
 - [ ] Delete asset
 - [ ] Get Asset File
-- [ ] Get Asset
+- [x] Get Asset
 - [x] List assets
 - [ ] Update asset
 
