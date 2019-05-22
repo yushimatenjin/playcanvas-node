@@ -24,11 +24,9 @@ export default class PlayCanvas {
     this.resourceUrl = `https://playcanvas.com/api/projects/${
       this.projectId
     }/assets?branchId=${this.branchId}`;
-
-    console.log(this.resourceUrl);
   }
 
-  async assetsList() {
+  async listAssets() {
     const response = await axios.get(this.resourceUrl, {
       headers: {
         Authorization: `Bearer ${this.accessToken}`,
