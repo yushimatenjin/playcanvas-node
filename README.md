@@ -47,7 +47,7 @@ const playcanvas = new PlayCanvas(options);
 
 ### Branches
 
-- [ ] List branches
+- [x] List branches
 ### Jobs
 - [x] Get job
   
