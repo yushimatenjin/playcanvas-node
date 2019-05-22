@@ -8,3 +8,8 @@ export const Assets = {
 export const Jobs = {
   GET_JOBS: ({ projectId }) => `https://playcanvas.com/api/jobs/${projectId}`
 };
+
+export const Scenes = {
+  LIST_SCENES: ({ projectId }) =>
+    `https://playcanvas.com/api/projects/${projectId}/scenes`
+};
