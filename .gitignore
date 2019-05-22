@@ -89,6 +89,6 @@ typings/
 .dynamodb/
 
 # End of https://www.gitignore.io/api/node
-
-.built
+built
 src/index.ts
+yarn.lock

@@ -10,11 +10,13 @@
   "scripts": {
     "test": "npm run build && ./node_modules/.bin/mocha --compilers js:espower-babel/guess test/**/*.js",
     "build": "tsc",
+    "start": "tsc && node built/index.js",
     "lint": "eslint ./src/*.ts",
     "prepublish": "npm run build"
   },
   "devDependencies": {
     "@types/superagent": "^4.1.1",
+    "@typescript-eslint/eslint-plugin": "^1.9.0",
     "babel-cli": "^6.4.5",
     "babel-core": "^6.4.5",
     "babel-eslint": "^10.0.1",
@@ -23,13 +25,17 @@
     "babel-plugin-transform-es2015-modules-commonjs": "^6.4.5",
     "babel-preset-es2015": "^6.3.13",
     "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-prettier": "^3.1.0",
     "espower-babel": "^4.0.1",
     "mocha": "^6.1.4",
     "power-assert": "^1.1.0",
     "pre-commit": "^1.1.2",
+    "prettier": "^1.17.1",
     "typescript": "^3.4.5"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "superagent": "^5.0.5"
   },
   "pre-commit": [
