@@ -5,5 +5,9 @@
   "extends": "eslint:recommended",
   "parserOptions": {
     "sourceType": "module"
+  },
+  "rules": {
+    "no-console": "off",
+    "no-undef": "warn"
   }
 }
