@@ -3,7 +3,8 @@ export const Apps = {
   GET_PRIMARY_APP: ({ projectId }) =>
     `https://playcanvas.com/api/projects/${projectId}/app`,
   GET_PROJECT_APPS: ({ projectId }) =>
-    `https://playcanvas.com/api/projects/${projectId}/apps`
+    `https://playcanvas.com/api/projects/${projectId}/apps`,
+  GET_APP: ({ id }) => `https://playcanvas.com/api/apps/${id}`
 };
 
 export const Assets = {
