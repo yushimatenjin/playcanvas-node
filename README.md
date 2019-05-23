@@ -38,12 +38,12 @@ const playcanvas = new PlayCanvas(options);
 
 ### Assets
 
-- [ ] Create asset
-- [ ] Delete asset
-- [ ] Get Asset File
+- [x] Create asset
+- [x] Delete asset
+- [x] Get Asset File
 - [x] Get Asset
 - [x] List assets
-- [ ] Update asset
+- [x] Update asset
 
 ### Branches
 
