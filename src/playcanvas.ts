@@ -47,6 +47,18 @@ export default class PlayCanvas {
     );
     return response.data;
   }
+  //  Get primary app
+  async getPrimaryApp() {
+    const response = await axios.get(
+      Apps.GET_PRIMARY_APP({ projectId: this.projectId }),
+      {
+        headers: this.headers
+      }
+    );
+
+    return response.data;
+  }
+
   // Assets
   async listAssets() {
     const response = await axios.get(
