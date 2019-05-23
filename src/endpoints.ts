@@ -12,7 +12,7 @@ export const Assets = {
     `https://playcanvas.com/api/projects/${projectId}/assets?branchId=${branchId}`,
   GET_ASSETS: ({ assetId, branchId }) =>
     `https://playcanvas.com/api/assets/${assetId}?branchId=${branchId}`,
-  DELETE_ASSETS: ({ assetId, branchId }) =>
+  DELETE_ASSET: ({ assetId, branchId }) =>
     `https://playcanvas.com/api/assets/${assetId}?branchId=${branchId}`
 };
 
