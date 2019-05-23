@@ -53,7 +53,7 @@ const playcanvas = new PlayCanvas(options);
   
 ### Projects
 
-- [ ] Archive project
+- [x] Archive project
 
 ### Scenes
 - [x] List scenes
