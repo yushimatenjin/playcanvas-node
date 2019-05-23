@@ -10,7 +10,7 @@ npm install --save playcanvas-node
 
 ## Example
 ```javascript
-import PlayCanvas from "./playcanvas";
+import PlayCanvas from "./playcanvas-node";
 
 const options = {
   accessToken: "xxxxxxxxxxxxxxxx",
@@ -23,6 +23,7 @@ const playcanvas = new PlayCanvas(options);
 
 (async () => {
   const response = await playcanvas.listAssets();
+  console.log(response)
 })();
 
 ```
