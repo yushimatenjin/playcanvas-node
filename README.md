@@ -33,7 +33,7 @@ const playcanvas = new PlayCanvas(options);
 
 - [x] Download app
 - [x] Get primary app
-- [ ] Get project apps
+- [x] Get project apps
 - [ ] Get app
 
 ### Assets
