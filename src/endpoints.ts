@@ -1,3 +1,7 @@
+export const Apps = {
+  DONWLAOD_APP: () => `https://playcanvas.com/api/apps/download`
+};
+
 export const Assets = {
   LIST_ASSETS: ({ projectId, branchId }) =>
     `https://playcanvas.com/api/projects/${projectId}/assets?branchId=${branchId}`,
