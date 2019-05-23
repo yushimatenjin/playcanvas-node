@@ -34,7 +34,7 @@ const playcanvas = new PlayCanvas(options);
 - [x] Download app
 - [x] Get primary app
 - [x] Get project apps
-- [ ] Get app
+- [x] Get app
 
 ### Assets
 
