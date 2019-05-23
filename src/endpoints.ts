@@ -16,7 +16,8 @@ export const Assets = {
     `https://playcanvas.com/api/assets/${assetId}?branchId=${branchId}`,
   GET_ASSET_FILE: ({ assetId, branchId }) =>
     `https://playcanvas.com/api/assets/${assetId}/file?branchId=${branchId}`,
-  CREATE_ASSET: () => `https://playcanvas.com/api/assets`
+  CREATE_ASSET: () => `https://playcanvas.com/api/assets`,
+  UPDATE_ASSET: ({ assetId }) => `https://playcanvas.com/api/assets/${assetId}`
 };
 
 export const Jobs = {
