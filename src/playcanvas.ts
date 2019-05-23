@@ -1,6 +1,6 @@
 import axios from "axios";
 import { PlayCanvasOptions } from "./interfaces";
-import { Assets, Jobs, Branches, Scenes } from "./endpoints";
+import { Assets, Jobs, Branches, Scenes, Apps } from "./endpoints";
 export default class PlayCanvas {
   accessToken: string;
   scenes?: Array<number>;
@@ -30,6 +30,22 @@ export default class PlayCanvas {
       Authorization: `Bearer ${this.accessToken}`,
       "Content-Type": "application/json"
     };
+  }
+  // Apps
+  //  Download app
+  async downloadApp() {
+    const response = await axios.post(
+      Apps.DONWLAOD_APP(),
+      {
+        project_id: this.projectId,
+        name: this.projectName,
+        scenes: this.scenes
+      },
+      {
+        headers: this.headers
+      }
+    );
+    return response.data;
   }
   // Assets
   async listAssets() {
