@@ -18,6 +18,10 @@ export const Jobs = {
   GET_JOBS: ({ projectId }) => `https://playcanvas.com/api/jobs/${projectId}`
 };
 
+export const Projects = {
+  ARCHIVE_PROJECT: id => `https://playcanvas.com/api/projects/${id}/export`
+};
+
 export const Scenes = {
   LIST_SCENES: ({ projectId }) =>
     `https://playcanvas.com/api/projects/${projectId}/scenes`

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { PlayCanvasOptions } from "./interfaces";
-import { Assets, Jobs, Branches, Scenes, Apps } from "./endpoints";
+import { Assets, Jobs, Branches, Scenes, Apps, Projects } from "./endpoints";
 export default class PlayCanvas {
   accessToken: string;
   scenes?: Array<number>;
@@ -71,7 +71,7 @@ export default class PlayCanvas {
   }
 
   // Get app
-  async getApp(id) {
+  async getApp(id: number) {
     const response = await axios.get(Apps.GET_APP({ id }), {
       headers: this.headers
     });
@@ -91,7 +91,7 @@ export default class PlayCanvas {
     );
     return response.data;
   }
-  async getAssets(assetId) {
+  async getAssets(assetId: number) {
     const response = await axios.get(
       Assets.GET_ASSETS({ assetId: assetId, branchId: this.branchId }),
       {
@@ -100,6 +100,20 @@ export default class PlayCanvas {
     );
     return response.data;
   }
+
+  // Projects
+  // Archive project
+  async archiveProject(id: number) {
+    const response = await axios.post(
+      Projects.ARCHIVE_PROJECT(id),
+      {},
+      {
+        headers: this.headers
+      }
+    );
+    return response.data;
+  }
+
   // Branches
   async listBranches() {
     try {
