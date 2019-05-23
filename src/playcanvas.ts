@@ -34,93 +34,125 @@ export default class PlayCanvas {
   // Apps
   //  Download app
   async downloadApp() {
-    const response = await axios.post(
-      Apps.DONWLAOD_APP(),
-      {
-        project_id: this.projectId,
-        name: this.projectName,
-        scenes: this.scenes
-      },
-      {
-        headers: this.headers
-      }
-    );
-    return response.data;
+    try {
+      const response = await axios.post(
+        Apps.DONWLAOD_APP(),
+        {
+          project_id: this.projectId,
+          name: this.projectName,
+          scenes: this.scenes
+        },
+        {
+          headers: this.headers
+        }
+      );
+      return response.data;
+    } catch (e) {
+      return e;
+    }
   }
   //  Get primary app
   async getPrimaryApp() {
-    const response = await axios.get(
-      Apps.GET_PRIMARY_APP({ projectId: this.projectId }),
-      {
-        headers: this.headers
-      }
-    );
+    try {
+      const response = await axios.get(
+        Apps.GET_PRIMARY_APP({ projectId: this.projectId }),
+        {
+          headers: this.headers
+        }
+      );
 
-    return response.data;
+      return response.data;
+    } catch (e) {
+      return e;
+    }
   }
 
   //  Get project apps
   async getProjectApp() {
-    const response = await axios.get(
-      Apps.GET_PROJECT_APPS({ projectId: this.projectId }),
-      {
-        headers: this.headers
-      }
-    );
-    return response.data;
+    try {
+      const response = await axios.get(
+        Apps.GET_PROJECT_APPS({ projectId: this.projectId }),
+        {
+          headers: this.headers
+        }
+      );
+      return response.data;
+    } catch (e) {
+      return e;
+    }
   }
 
   // Get app
   async getApp(id: number) {
-    const response = await axios.get(Apps.GET_APP({ id }), {
-      headers: this.headers
-    });
-    return response.data;
+    try {
+      const response = await axios.get(Apps.GET_APP({ id }), {
+        headers: this.headers
+      });
+      return response.data;
+    } catch (e) {
+      return e;
+    }
   }
 
   // Assets
+
   async listAssets() {
-    const response = await axios.get(
-      Assets.LIST_ASSETS({
-        projectId: this.projectId,
-        branchId: this.branchId
-      }),
-      {
-        headers: this.headers
-      }
-    );
-    return response.data;
+    try {
+      const response = await axios.get(
+        Assets.LIST_ASSETS({
+          projectId: this.projectId,
+          branchId: this.branchId
+        }),
+        {
+          headers: this.headers
+        }
+      );
+      return response.data;
+    } catch (e) {
+      return e;
+    }
   }
   // Get assets
   async getAssets(assetId: number) {
-    const response = await axios.get(
-      Assets.GET_ASSETS({ assetId: assetId, branchId: this.branchId }),
-      {
-        headers: this.headers
-      }
-    );
-    return response.data;
+    try {
+      const response = await axios.get(
+        Assets.GET_ASSETS({ assetId: assetId, branchId: this.branchId }),
+        {
+          headers: this.headers
+        }
+      );
+      return response.data;
+    } catch (e) {
+      return e;
+    }
   }
-
   //   Delete asset
   async deleteAsset(assetId: number) {
-    const response = await axios.delete(
-      Assets.DELETE_ASSET({ assetId: assetId, branchId: this.branchId }),
-      {
-        headers: this.headers
-      }
-    );
-    return response.data;
+    try {
+      const response = await axios.delete(
+        Assets.DELETE_ASSET({ assetId: assetId, branchId: this.branchId }),
+        {
+          headers: this.headers
+        }
+      );
+      return response.data;
+    } catch (e) {
+      return e;
+    }
   }
   //   Get Asset File
   async getAssetFile(assetId: number) {
-    const response = await axios.get(
-      Assets.GET_ASSET_FILE({ assetId: assetId, branchId: this.branchId }),
-      {
-        headers: this.headers
-      }
-    );
-    return response.data;
+    try {
+      const response = await axios.get(
+        Assets.GET_ASSET_FILE({ assetId: assetId, branchId: this.branchId }),
+        {
+          headers: this.headers
+        }
+      );
+      return response.data;
+    } catch (e) {
+      return e;
+    }
   }
   //   create asset
   async createAsset(options: {
@@ -129,48 +161,59 @@ export default class PlayCanvas {
     preload: boolean;
     file: any;
   }) {
-    const body = {
-      name: options.name,
-      parent: options.parent,
-      preload: options.preload,
-      file: options.file,
-      project_id: this.projectId
-    };
-    const response = await axios.post(Assets.CREATE_ASSET(), body, {
-      headers: {
-        ...this.headers,
-        "Content-Type": "multipart/form-data"
-      }
-    });
-    return response.data;
-  }
-
-  //  Update asset
-  async updateAsset({ assetId, file }) {
-    const response = await axios.put(
-      Assets.UPDATE_ASSET(assetId),
-      { file },
-      {
+    try {
+      const body = {
+        name: options.name,
+        parent: options.parent,
+        preload: options.preload,
+        file: options.file,
+        project_id: this.projectId
+      };
+      const response = await axios.post(Assets.CREATE_ASSET(), body, {
         headers: {
           ...this.headers,
           "Content-Type": "multipart/form-data"
         }
-      }
-    );
+      });
+      return response.data;
+    } catch (e) {
+      return e;
+    }
+  }
 
-    return response.data;
+  //  Update asset
+  async updateAsset({ assetId, file }) {
+    try {
+      const response = await axios.put(
+        Assets.UPDATE_ASSET(assetId),
+        { file },
+        {
+          headers: {
+            ...this.headers,
+            "Content-Type": "multipart/form-data"
+          }
+        }
+      );
+      return response.data;
+    } catch (e) {
+      return e;
+    }
   }
   // Projects
   // Archive project
   async archiveProject(id: number) {
-    const response = await axios.post(
-      Projects.ARCHIVE_PROJECT(id),
-      {},
-      {
-        headers: this.headers
-      }
-    );
-    return response.data;
+    try {
+      const response = await axios.post(
+        Projects.ARCHIVE_PROJECT(id),
+        {},
+        {
+          headers: this.headers
+        }
+      );
+      return response.data;
+    } catch (e) {
+      return e;
+    }
   }
 
   // Branches
@@ -181,8 +224,8 @@ export default class PlayCanvas {
         { headers: this.headers }
       );
       return response.data;
-    } catch (error) {
-      return error;
+    } catch (e) {
+      return e;
     }
   }
   // Jobs
@@ -193,8 +236,8 @@ export default class PlayCanvas {
         { headers: this.headers }
       );
       return response.data;
-    } catch (error) {
-      return error;
+    } catch (e) {
+      return e;
     }
   }
 
@@ -206,8 +249,8 @@ export default class PlayCanvas {
         { headers: this.headers }
       );
       return response.data;
-    } catch (error) {
-      return error;
+    } catch (e) {
+      return e;
     }
   }
 }
