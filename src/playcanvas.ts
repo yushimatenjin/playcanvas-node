@@ -122,7 +122,7 @@ export default class PlayCanvas {
     );
     return response.data;
   }
-  // create asset
+  //   create asset
   async createAsset(options: {
     name: string;
     parent: number;
@@ -142,6 +142,22 @@ export default class PlayCanvas {
         "Content-Type": "multipart/form-data"
       }
     });
+    return response.data;
+  }
+
+  //  Update asset
+  async updateAsset({ assetId, file }) {
+    const response = await axios.put(
+      Assets.UPDATE_ASSET(assetId),
+      { file },
+      {
+        headers: {
+          ...this.headers,
+          "Content-Type": "multipart/form-data"
+        }
+      }
+    );
+
     return response.data;
   }
   // Projects
