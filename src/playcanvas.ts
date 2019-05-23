@@ -102,8 +102,7 @@ export default class PlayCanvas {
     return response.data;
   }
 
-  // Delete asset
-
+  //   Delete asset
   async deleteAsset(assetId: number) {
     const response = await axios.delete(
       Assets.DELETE_ASSET({ assetId: assetId, branchId: this.branchId }),
@@ -113,7 +112,38 @@ export default class PlayCanvas {
     );
     return response.data;
   }
-
+  //   Get Asset File
+  async getAssetFile(assetId: number) {
+    const response = await axios.get(
+      Assets.GET_ASSET_FILE({ assetId: assetId, branchId: this.branchId }),
+      {
+        headers: this.headers
+      }
+    );
+    return response.data;
+  }
+  // create asset
+  async createAsset(options: {
+    name: string;
+    parent: number;
+    preload: boolean;
+    file: any;
+  }) {
+    const body = {
+      name: options.name,
+      parent: options.parent,
+      preload: options.preload,
+      file: options.file,
+      project_id: this.projectId
+    };
+    const response = await axios.post(Assets.CREATE_ASSET(), body, {
+      headers: {
+        ...this.headers,
+        "Content-Type": "multipart/form-data"
+      }
+    });
+    return response.data;
+  }
   // Projects
   // Archive project
   async archiveProject(id: number) {
