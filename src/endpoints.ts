@@ -13,7 +13,10 @@ export const Assets = {
   GET_ASSETS: ({ assetId, branchId }) =>
     `https://playcanvas.com/api/assets/${assetId}?branchId=${branchId}`,
   DELETE_ASSET: ({ assetId, branchId }) =>
-    `https://playcanvas.com/api/assets/${assetId}?branchId=${branchId}`
+    `https://playcanvas.com/api/assets/${assetId}?branchId=${branchId}`,
+  GET_ASSET_FILE: ({ assetId, branchId }) =>
+    `https://playcanvas.com/api/assets/${assetId}/file?branchId=${branchId}`,
+  CREATE_ASSET: () => `https://playcanvas.com/api/assets`
 };
 
 export const Jobs = {
