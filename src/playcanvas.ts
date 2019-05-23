@@ -91,9 +91,22 @@ export default class PlayCanvas {
     );
     return response.data;
   }
+  // Get assets
   async getAssets(assetId: number) {
     const response = await axios.get(
       Assets.GET_ASSETS({ assetId: assetId, branchId: this.branchId }),
+      {
+        headers: this.headers
+      }
+    );
+    return response.data;
+  }
+
+  // Delete asset
+
+  async deleteAsset(assetId: number) {
+    const response = await axios.delete(
+      Assets.DELETE_ASSETS({ assetId: assetId, branchId: this.branchId }),
       {
         headers: this.headers
       }
