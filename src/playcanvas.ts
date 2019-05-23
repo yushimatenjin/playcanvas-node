@@ -106,7 +106,7 @@ export default class PlayCanvas {
 
   async deleteAsset(assetId: number) {
     const response = await axios.delete(
-      Assets.DELETE_ASSETS({ assetId: assetId, branchId: this.branchId }),
+      Assets.DELETE_ASSET({ assetId: assetId, branchId: this.branchId }),
       {
         headers: this.headers
       }
