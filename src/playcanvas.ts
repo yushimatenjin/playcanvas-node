@@ -1,4 +1,6 @@
 import axios from "axios";
+import FormData = require("form-data");
+import fs = require("fs");
 import { PlayCanvasOptions } from "./interfaces";
 import { Assets, Jobs, Branches, Scenes, Apps, Projects } from "./endpoints";
 export default class PlayCanvas {
@@ -24,12 +26,30 @@ export default class PlayCanvas {
     this.accessToken = accessToken;
     this.scenes = scenes;
     this.projectId = projectId;
-    this.branchId = branchId;
+    this.branchId = branchId ? branchId : "master";
     this.projectName = projectName;
     this.headers = {
       Authorization: `Bearer ${this.accessToken}`,
       "Content-Type": "application/json"
     };
+  }
+  // functions
+  async getListAssets() {
+    try {
+      const response = await this.listAssets();
+      return response.result;
+    } catch (e) {
+      return e;
+    }
+  }
+
+  async createNewAsset(options: { name: string; path: string }) {
+    try {
+      const response = await this.createAsset(options);
+      return response;
+    } catch (e) {
+      return e;
+    }
   }
   // Apps
   //  Download app
@@ -155,24 +175,24 @@ export default class PlayCanvas {
     }
   }
   //   create asset
-  async createAsset(options: {
+  private async createAsset(options: {
     name: string;
-    parent: number;
-    preload: boolean;
-    file: any;
+    path: string;
+    parent?: number;
+    preload?: boolean;
   }) {
     try {
-      const body = {
-        name: options.name,
-        parent: options.parent,
-        preload: options.preload,
-        file: options.file,
-        project_id: this.projectId
-      };
-      const response = await axios.post(Assets.CREATE_ASSET(), body, {
+      const form = new FormData();
+      form.append("name", options.name);
+      form.append("projectId", this.projectId);
+      form.append("file", fs.createReadStream(options.path));
+      if (options.parent) form.append("parent", options.parent);
+      if (options.preload) form.append("preload", options.preload);
+
+      const response = await axios.post(Assets.CREATE_ASSET(), form, {
         headers: {
-          ...this.headers,
-          "Content-Type": "multipart/form-data"
+          Authorization: `Bearer ${this.accessToken}`,
+          "Content-Type": form.getHeaders()["content-type"]
         }
       });
       return response.data;
