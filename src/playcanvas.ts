@@ -202,18 +202,18 @@ export default class PlayCanvas {
   }
 
   //  Update asset
-  async updateAsset({ assetId, file }) {
+  async updateAsset({ assetId, path }) {
     try {
-      const response = await axios.put(
-        Assets.UPDATE_ASSET(assetId),
-        { file },
-        {
-          headers: {
-            ...this.headers,
-            "Content-Type": "multipart/form-data"
-          }
+      const form = new FormData();
+      form.append("assetId", assetId);
+      form.append("file", fs.createReadStream(path));
+
+      const response = await axios.put(Assets.UPDATE_ASSET(assetId), form, {
+        headers: {
+          Authorization: `Bearer ${this.accessToken}`,
+          "Content-Type": form.getHeaders()["content-type"]
         }
-      );
+      });
       return response.data;
     } catch (e) {
       return e;
