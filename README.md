@@ -40,6 +40,15 @@ const playcanvas = new PlayCanvas(options);
 ### Assets
 
 - [x] Create asset
+
+```javascript
+  const options = {
+    name: "index.html",
+    path: "./dist/index.html"
+  };
+  await playcanvas.createNewAsset(options);
+```
+
 - [x] Delete asset
 - [x] Get Asset File
 - [x] Get Asset
