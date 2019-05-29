@@ -5,3 +5,9 @@ export type PlayCanvasOptions = {
   branchId?: string;
   projectName?: string;
 };
+
+export type Asset = {
+  id: number;
+  name: string;
+  parent: number;
+};
