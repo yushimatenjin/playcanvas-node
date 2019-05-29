@@ -43,7 +43,11 @@ export default class PlayCanvas {
     }
   }
 
-  async createNewAsset(options: { name: string; path: string }) {
+  async createNewAsset(options: {
+    name: string;
+    path: string;
+    parent?: number;
+  }) {
     try {
       const response = await this.createAsset(options);
       return response;
@@ -205,10 +209,9 @@ export default class PlayCanvas {
   async updateAsset({ assetId, path }) {
     try {
       const form = new FormData();
-      form.append("assetId", assetId);
       form.append("file", fs.createReadStream(path));
-
-      const response = await axios.put(Assets.UPDATE_ASSET(assetId), form, {
+      form.append("branchId", this.branchId);
+      const response = await axios.put(Assets.UPDATE_ASSET({ assetId }), form, {
         headers: {
           Authorization: `Bearer ${this.accessToken}`,
           "Content-Type": form.getHeaders()["content-type"]
