@@ -42,6 +42,8 @@ const playcanvas = new PlayCanvas(options);
 - [x] Create asset
 
 `This endpoint currently only supports creating script, html, css, text, shader and json type assets.`
+[https://developer.playcanvas.com/en/user-manual/api/asset-create/](https://developer.playcanvas.com/en/user-manual/api/asset-create/)
+
 ```javascript
   const options = {
     name: "index.html",
