@@ -58,6 +58,14 @@ const playcanvas = new PlayCanvas(options);
 - [x] List assets
 - [x] Update asset
 
+```javascript
+  const playcanvas = new PlayCanvas(options);
+  const parentDir = "dev"
+  const name = "index.html"
+  const path = "./dist/index.html"
+  
+  await playcanvas.updateAssets(parentDir,name,path);
+```
 ### Branches
 
 - [x] List branches
