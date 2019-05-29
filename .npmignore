@@ -1,3 +1,6 @@
 src/
 test/
 _test.js
+.vscode
+test.js
+built/index*
