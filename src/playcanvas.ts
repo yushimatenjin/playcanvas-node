@@ -1,7 +1,7 @@
 import axios from "axios";
 import FormData = require("form-data");
 import fs = require("fs");
-import { PlayCanvasOptions, Asset, AssetsResponse } from "./interfaces";
+import { PlayCanvasOptions, Asset } from "./interfaces";
 import { Assets, Jobs, Branches, Scenes, Apps, Projects } from "./endpoints";
 export default class PlayCanvas {
   accessToken: string;
