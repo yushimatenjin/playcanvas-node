@@ -1,7 +1,7 @@
 import axios from "axios";
 import FormData = require("form-data");
 import fs = require("fs");
-import { PlayCanvasOptions } from "./interfaces";
+import { PlayCanvasOptions, Asset, AssetsResponse } from "./interfaces";
 import { Assets, Jobs, Branches, Scenes, Apps, Projects } from "./endpoints";
 export default class PlayCanvas {
   accessToken: string;
@@ -33,11 +33,41 @@ export default class PlayCanvas {
       "Content-Type": "application/json"
     };
   }
+
+  async updateAssets(workingDir: string, name: string, path: string) {
+    const assetsList = await this.getListAssets();
+    const devDir: Asset = assetsList.find((asset: Asset) => {
+      if (asset.name === workingDir) return true;
+    });
+
+    if (!devDir.id) throw `${workingDir} is not found.`;
+
+    const parentId = devDir.id;
+    const targetAsset: Asset = assetsList.find((asset: Asset) => {
+      if (asset.parent === parentId && asset.name === name) return true;
+    });
+
+    if (targetAsset) {
+      const res = await this.updateAsset({
+        assetId: targetAsset.id,
+        path: path
+      });
+      return res;
+    } else {
+      const res = await this.createNewAsset({
+        name: name,
+        path: path,
+        parent: parentId
+      });
+      return res;
+    }
+  }
+
   // functions
   async getListAssets() {
     try {
       const response = await this.listAssets();
-      return response.result;
+      return Object.values(response.result);
     } catch (e) {
       return e;
     }
@@ -120,7 +150,7 @@ export default class PlayCanvas {
 
   // Assets
 
-  async listAssets() {
+  private async listAssets() {
     try {
       const response = await axios.get(
         Assets.LIST_ASSETS({
