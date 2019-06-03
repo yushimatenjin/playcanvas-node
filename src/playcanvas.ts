@@ -40,7 +40,7 @@ export default class PlayCanvas {
       if (asset.name === workingDir) return true;
     });
 
-    if (!devDir.id) throw `${workingDir} is not found.`;
+    if (!devDir) throw `${workingDir} is not found.`;
 
     const parentId = devDir.id;
     const targetAsset: Asset = assetsList.find((asset: Asset) => {
