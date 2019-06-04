@@ -1,16 +1,18 @@
-## Installation
 
-```
+## Installation
+```bash
 npm install --save playcanvas-node
 ```
 
 ## Documentation
+
 - [REST API - PLAYCANVAS MANUAL](https://developer.playcanvas.com/en/user-manual/api/)
 
 
 ## Example
+
 ```javascript
-import PlayCanvas from "./playcanvas-node";
+import PlayCanvas from "playcanvas-node";
 
 const options = {
   accessToken: "xxxxxxxxxxxxxxxx",
@@ -22,13 +24,12 @@ const options = {
 const playcanvas = new PlayCanvas(options);
 
 (async () => {
-  const response = await playcanvas.listAssets();
-  console.log(response)
+  const res = await playcanvas.listAssets();
+  console.log(res)
 })();
 
 ```
 
-## Compatibility Table
 
 ### Apps
 
@@ -40,9 +41,6 @@ const playcanvas = new PlayCanvas(options);
 ### Assets
 
 - [x] Create asset
-
-`This endpoint currently only supports creating script, html, css, text, shader and json type assets.`
-[https://developer.playcanvas.com/en/user-manual/api/asset-create/](https://developer.playcanvas.com/en/user-manual/api/asset-create/)
 
 ```javascript
   const options = {
@@ -58,18 +56,22 @@ const playcanvas = new PlayCanvas(options);
 - [x] List assets
 - [x] Update asset
 
+Assetをアップロード  
+`.js`,`.css`,`.txt`,`.json`,`.html`がアップロードすることができます.
+[https://developer.playcanvas.com/en/user-manual/api/asset-create/](https://developer.playcanvas.com/en/user-manual/api/asset-create/)
+
 ```javascript
   const playcanvas = new PlayCanvas(options);
-  const parentDir = "dev"
-  const name = "index.html"
-  const path = "./dist/index.html"
-  
-  await playcanvas.updateAssets(parentDir,name,path);
+  const remotePath = process.env.NODE_ENV === 'development' ? "dev" : "build"
+  await playcanvas.updateAssets(dev,"index.html","./dist/index.html");
 ```
+
 ### Branches
 
 - [x] List branches
+
 ### Jobs
+
 - [x] Get job
   
 ### Projects
@@ -77,4 +79,5 @@ const playcanvas = new PlayCanvas(options);
 - [x] Archive project
 
 ### Scenes
+
 - [x] List scenes
