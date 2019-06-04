@@ -30,7 +30,6 @@ const playcanvas = new PlayCanvas(options);
 
 ```
 
-
 ### Apps
 
 - [x] Download app
@@ -57,7 +56,7 @@ const playcanvas = new PlayCanvas(options);
 - [x] Update asset
 
 Assetをアップロード  
-`.js`,`.css`,`.txt`,`.json`,`.html`がアップロードすることができます.
+`.js`,`.css`,`.txt`,`.json`,`.html`がアップロードすることができます.  
 [https://developer.playcanvas.com/en/user-manual/api/asset-create/](https://developer.playcanvas.com/en/user-manual/api/asset-create/)
 
 ```javascript
