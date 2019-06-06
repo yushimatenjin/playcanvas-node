@@ -11,6 +11,9 @@
     "playcanvas",
     "REST API"
   ],
+  "files": [
+    "built"
+  ],
   "scripts": {
     "build": "tsc",
     "start": "tsc && node built/index.js",
