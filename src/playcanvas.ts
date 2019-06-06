@@ -48,13 +48,13 @@ export default class PlayCanvas {
     };
   }
 
-  async updateAssets(workingDir: string, name: string, path: string) {
+  async updateAssets(remotePath: string, name: string, path: string) {
     const assetsList = await this.getListAssets();
     const devDir: Asset = assetsList.find((asset: Asset) => {
-      if (asset.name === workingDir) return true;
+      if (asset.name === remotePath) return true;
     });
 
-    if (!devDir) throw `${workingDir} is not found.`;
+    if (!devDir) throw `${remotePath} is not found.`;
 
     const parentId = devDir.id;
     const targetAsset: Asset = assetsList.find((asset: Asset) => {
@@ -150,7 +150,12 @@ export default class PlayCanvas {
     }
   }
 
-  // Get app
+  /**
+   * @function
+   * @name PlayCanvas#getApp
+   * @description Gets a published App by id.
+   * @param {Number} id
+   */
   async getApp(id: number) {
     try {
       const response = await axios.get(Apps.GET_APP({ id }), {
@@ -162,8 +167,11 @@ export default class PlayCanvas {
     }
   }
 
-  // Assets
-
+  /**
+   * @function
+   * @name PlayCanvas#listAssets
+   * @description Get the details of all assets in a project for a specific branch
+   */
   private async listAssets() {
     try {
       const response = await axios.get(
@@ -180,7 +188,13 @@ export default class PlayCanvas {
       return e;
     }
   }
-  // Get assets
+
+  /**
+   * @function
+   * @name PlayCanvas#getAssets
+   * @description Get the details of a single asset
+   * @param {Number} assetId
+   */
   async getAssets(assetId: number) {
     try {
       const response = await axios.get(
@@ -194,7 +208,12 @@ export default class PlayCanvas {
       return e;
     }
   }
-  //   Delete asset
+  /**
+   * @function
+   * @name PlayCanvas#deleteAsset
+   * @description Permanently delete an asset from a branch of your project. Warning deleting an asset is permanent and unrecoverable unless you have taken a checkpoint of it.
+   * @param {Number} assetId
+   */
   async deleteAsset(assetId: number) {
     try {
       const response = await axios.delete(
@@ -208,7 +227,12 @@ export default class PlayCanvas {
       return e;
     }
   }
-  //   Get Asset File
+  /**
+   * @function
+   * @name PlayCanvas#getAssetFile
+   * @description Get the details of a single asset
+   * @param {Number} assetId
+   */
   async getAssetFile(assetId: number) {
     try {
       const response = await axios.get(
@@ -222,7 +246,15 @@ export default class PlayCanvas {
       return e;
     }
   }
-  //   create asset
+  /**
+   * @function
+   * @name PlayCanvas#createAsset
+   * @description Create a new asset.
+   * @param {String} name
+   * @param {String} path
+   * @param {Number} parent
+   * @param {boolean} boolean
+   */
   private async createAsset(options: {
     name: string;
     path: string;
@@ -249,7 +281,13 @@ export default class PlayCanvas {
     }
   }
 
-  //  Update asset
+  /**
+   * @function
+   * @name PlayCanvas#updateAsset
+   * @description Update an existing asset's file.
+   * @param {Number} assetId
+   * @param {Number} path
+   */
   async updateAsset({ assetId, path }) {
     try {
       const form = new FormData();
@@ -266,8 +304,29 @@ export default class PlayCanvas {
       return e;
     }
   }
-  // Projects
-  // Archive project
+  /**
+   * @function
+   * @name PlayCanvas#listBranches
+   * @description Get a list of all open branches for a project
+   */
+  async listBranches() {
+    try {
+      const response = await axios.get(
+        Branches.LIST_BRANCHES({ projectId: this.projectId }),
+        { headers: this.headers }
+      );
+      return response.data;
+    } catch (e) {
+      return e;
+    }
+  }
+
+  /**
+   * @function
+   * @name PlayCanvas#archiveProject
+   * @param {Number} id
+   * @description This will allow you to download a zip archive of your entire project. You can import that archive from your Projects Dashboard to create a new Project from that archive.
+   */
   async archiveProject(id: number) {
     try {
       const response = await axios.post(
@@ -283,19 +342,11 @@ export default class PlayCanvas {
     }
   }
 
-  // Branches
-  async listBranches() {
-    try {
-      const response = await axios.get(
-        Branches.LIST_BRANCHES({ projectId: this.projectId }),
-        { headers: this.headers }
-      );
-      return response.data;
-    } catch (e) {
-      return e;
-    }
-  }
-  // Jobs
+  /**
+   * @function
+   * @name PlayCanvas#getJob
+   * @description Gets a Job by id.
+   */
   async getJob() {
     try {
       const response = await axios.get(
@@ -308,7 +359,11 @@ export default class PlayCanvas {
     }
   }
 
-  // Scenes
+  /**
+   * @function
+   * @name PlayCanvas#listScenes
+   * @description Get a list of all scenes for a project
+   */
   async listScenes() {
     try {
       const response = await axios.get(
