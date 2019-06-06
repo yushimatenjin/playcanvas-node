@@ -1,24 +1,12 @@
 {
   "name": "playcanvas-node",
-  "version": "1.1.0",
   "description": "PlayCanvas node.js bindings",
-  "main": "built/playcanvas.js",
-  "types": "built/playcanvas.d.ts",
-  "repository": "git@github.com:yushimatenjin/playcanvas-node.git",
+  "version": "1.1.0",
   "author": "yushimatenjin <example@example.com>",
-  "license": "MIT",
-  "keywords": [
-    "playcanvas",
-    "REST API"
-  ],
-  "files": [
-    "built"
-  ],
-  "scripts": {
-    "build": "tsc",
-    "start": "tsc && node built/index.js",
-    "lint": "eslint ./src/*.ts",
-    "prepublish": "npm run build"
+  "dependencies": {
+    "axios": "^0.18.0",
+    "form-data": "^2.3.3",
+    "superagent": "^5.0.5"
   },
   "devDependencies": {
     "@types/superagent": "^4.1.1",
@@ -40,12 +28,24 @@
     "prettier": "^1.17.1",
     "typescript": "^3.4.5"
   },
-  "dependencies": {
-    "axios": "^0.18.0",
-    "form-data": "^2.3.3",
-    "superagent": "^5.0.5"
-  },
+  "files": [
+    "built"
+  ],
+  "keywords": [
+    "REST API",
+    "playcanvas"
+  ],
+  "license": "MIT",
+  "main": "built/playcanvas.js",
   "pre-commit": [
     "lint"
-  ]
+  ],
+  "repository": "git@github.com:yushimatenjin/playcanvas-node.git",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint ./src/*.ts",
+    "prepublish": "npm run build",
+    "start": "tsc && node built/index.js"
+  },
+  "types": "built/playcanvas.d.ts"
 }
