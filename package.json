@@ -1,6 +1,6 @@
 {
   "name": "playcanvas-node",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "PlayCanvas node.js bindings",
   "main": "built/playcanvas.js",
   "types": "built/playcanvas.d.ts",
