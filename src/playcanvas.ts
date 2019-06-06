@@ -3,6 +3,20 @@ import FormData = require("form-data");
 import fs = require("fs");
 import { PlayCanvasOptions, Asset } from "./interfaces";
 import { Assets, Jobs, Branches, Scenes, Apps, Projects } from "./endpoints";
+
+/**
+ * @name PlayCanvas
+ * @description PlayCanvasのREST APIを操作
+ * @param {String} accessToken
+ * @param {Array} scenes
+ * @param {Number} projectId
+ * @param {String} branchId
+ * @param {Strting} projectName
+ * @example <caption>BASIC</caption>
+ * import PlayCanvas from 'playcanvas-node'
+ * const playcanvas = new PlayCanvas(options)
+ * @return {Object} PlayCanvas
+ */
 export default class PlayCanvas {
   accessToken: string;
   scenes?: Array<number>;
