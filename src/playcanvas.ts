@@ -49,31 +49,35 @@ export default class PlayCanvas {
   }
 
   async updateAssets(remotePath: string, name: string, path: string) {
-    const assetsList = await this.getListAssets();
-    const devDir: Asset = assetsList.find((asset: Asset) => {
-      if (asset.name === remotePath) return true;
-    });
-
-    if (!devDir) throw `${remotePath} is not found.`;
-
-    const parentId = devDir.id;
-    const targetAsset: Asset = assetsList.find((asset: Asset) => {
-      if (asset.parent === parentId && asset.name === name) return true;
-    });
-
-    if (targetAsset) {
-      const res = await this.updateAsset({
-        assetId: targetAsset.id,
-        path: path
+    try {
+      const assetsList = await this.getListAssets();
+      const devDir: Asset = assetsList.find((asset: Asset) => {
+        if (asset.name === remotePath) return true;
       });
-      return res;
-    } else {
-      const res = await this.createNewAsset({
-        name: name,
-        path: path,
-        parent: parentId
+
+      if (!devDir) throw `${remotePath} is not found.`;
+
+      const parentId = devDir.id;
+      const targetAsset: Asset = assetsList.find((asset: Asset) => {
+        if (asset.parent === parentId && asset.name === name) return true;
       });
-      return res;
+
+      if (targetAsset) {
+        const res = await this.updateAsset({
+          assetId: targetAsset.id,
+          path: path
+        });
+        return res;
+      } else {
+        const res = await this.createNewAsset({
+          name: name,
+          path: path,
+          parent: parentId
+        });
+        return res;
+      }
+    } catch (e) {
+      return e;
     }
   }
 
