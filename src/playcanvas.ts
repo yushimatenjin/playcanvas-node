@@ -120,7 +120,7 @@ export default class PlayCanvas {
           headers: this.headers
         }
       );
-      return response.data.result;
+      return response.data;
     } catch (e) {
       return e;
     }
@@ -135,7 +135,7 @@ export default class PlayCanvas {
         }
       );
 
-      return response.data.result;
+      return response.data;
     } catch (e) {
       return e;
     }
@@ -150,7 +150,7 @@ export default class PlayCanvas {
           headers: this.headers
         }
       );
-      return response.data.result.result;
+      return response.data;
     } catch (e) {
       return e;
     }
