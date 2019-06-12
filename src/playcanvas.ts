@@ -48,6 +48,8 @@ export default class PlayCanvas {
     };
   }
 
+  static async scenes({ projectId }) {}
+
   async updateAssets(remotePath: string, name: string, path: string) {
     try {
       const assetsList = await this.getListAssets();
@@ -85,7 +87,7 @@ export default class PlayCanvas {
   async getListAssets() {
     try {
       const response = await this.listAssets();
-      return Object.values(response.result);
+      return Object.values(response);
     } catch (e) {
       return e;
     }
@@ -118,7 +120,7 @@ export default class PlayCanvas {
           headers: this.headers
         }
       );
-      return response.data;
+      return response.data.result;
     } catch (e) {
       return e;
     }
@@ -133,7 +135,7 @@ export default class PlayCanvas {
         }
       );
 
-      return response.data;
+      return response.data.result;
     } catch (e) {
       return e;
     }
@@ -148,7 +150,7 @@ export default class PlayCanvas {
           headers: this.headers
         }
       );
-      return response.data;
+      return response.data.result.result;
     } catch (e) {
       return e;
     }
@@ -165,7 +167,7 @@ export default class PlayCanvas {
       const response = await axios.get(Apps.GET_APP({ id }), {
         headers: this.headers
       });
-      return response.data;
+      return response.data.result;
     } catch (e) {
       return e;
     }
@@ -187,7 +189,7 @@ export default class PlayCanvas {
           headers: this.headers
         }
       );
-      return response.data;
+      return response.data.result;
     } catch (e) {
       return e;
     }
@@ -207,7 +209,7 @@ export default class PlayCanvas {
           headers: this.headers
         }
       );
-      return response.data;
+      return response.data.result;
     } catch (e) {
       return e;
     }
@@ -226,7 +228,7 @@ export default class PlayCanvas {
           headers: this.headers
         }
       );
-      return response.data;
+      return response.data.result;
     } catch (e) {
       return e;
     }
@@ -245,7 +247,7 @@ export default class PlayCanvas {
           headers: this.headers
         }
       );
-      return response.data;
+      return response.data.result;
     } catch (e) {
       return e;
     }
@@ -279,7 +281,7 @@ export default class PlayCanvas {
           "Content-Type": form.getHeaders()["content-type"]
         }
       });
-      return response.data;
+      return response.data.result;
     } catch (e) {
       return e;
     }
@@ -303,7 +305,7 @@ export default class PlayCanvas {
           "Content-Type": form.getHeaders()["content-type"]
         }
       });
-      return response.data;
+      return response.data.result;
     } catch (e) {
       return e;
     }
@@ -319,7 +321,7 @@ export default class PlayCanvas {
         Branches.LIST_BRANCHES({ projectId: this.projectId }),
         { headers: this.headers }
       );
-      return response.data;
+      return response.data.result;
     } catch (e) {
       return e;
     }
@@ -340,7 +342,7 @@ export default class PlayCanvas {
           headers: this.headers
         }
       );
-      return response.data;
+      return response.data.result;
     } catch (e) {
       return e;
     }
@@ -357,7 +359,7 @@ export default class PlayCanvas {
         Jobs.GET_JOBS({ projectId: this.projectId }),
         { headers: this.headers }
       );
-      return response.data;
+      return response.data.result;
     } catch (e) {
       return e;
     }
@@ -374,7 +376,7 @@ export default class PlayCanvas {
         Scenes.LIST_SCENES({ projectId: this.projectId }),
         { headers: this.headers }
       );
-      return response.data;
+      return response.data.result;
     } catch (e) {
       return e;
     }
