@@ -21,7 +21,7 @@ export const Assets = {
 };
 
 export const Jobs = {
-  GET_JOBS: ({ projectId }) => `https://playcanvas.com/api/jobs/${projectId}`
+  GET_JOBS: id => `https://playcanvas.com/api/jobs/${id}`
 };
 
 export const Projects = {
