@@ -358,7 +358,7 @@ export default class PlayCanvas {
       const response = await axios.get(Jobs.GET_JOBS(id), {
         headers: this.headers
       });
-      return response.data.result;
+      return response.data;
     } catch (e) {
       return e;
     }
