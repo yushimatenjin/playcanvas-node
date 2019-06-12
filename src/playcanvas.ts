@@ -353,12 +353,11 @@ export default class PlayCanvas {
    * @name PlayCanvas#getJob
    * @description Gets a Job by id.
    */
-  async getJob() {
+  async getJob(id: number) {
     try {
-      const response = await axios.get(
-        Jobs.GET_JOBS({ projectId: this.projectId }),
-        { headers: this.headers }
-      );
+      const response = await axios.get(Jobs.GET_JOBS(id), {
+        headers: this.headers
+      });
       return response.data.result;
     } catch (e) {
       return e;
