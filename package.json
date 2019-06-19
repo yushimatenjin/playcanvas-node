@@ -12,6 +12,7 @@
   "devDependencies": {
     "@types/superagent": "^4.1.1",
     "@typescript-eslint/eslint-plugin": "^1.10.2",
+    "@typescript-eslint/parser": "^1.10.2",
     "babel-cli": "^6.4.5",
     "babel-core": "^6.4.5",
     "babel-eslint": "^10.0.2",
@@ -47,7 +48,7 @@
   "scripts": {
     "build": "tsc",
     "lint": "eslint ./src/*.ts",
-    "prepublish": "npm run build",
+    "prepublishOnly": "npm run build",
     "start": "tsc && node built/index.js"
   },
   "types": "built/playcanvas.d.ts"
