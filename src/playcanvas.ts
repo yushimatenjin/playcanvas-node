@@ -64,7 +64,7 @@ export default class PlayCanvas {
         if (asset.parent === parentId && asset.name === name) return true;
       });
 
-      if (targetAsset) {
+      if (targetAsset && targetAsset.hasOwnProperty("id")) {
         const res = await this.updateAsset({
           assetId: targetAsset.id,
           path: path
