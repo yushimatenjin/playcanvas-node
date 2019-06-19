@@ -1,7 +1,6 @@
 import axios from "axios";
 import FormData from "form-data";
 import fs from "fs";
-import qs from "qs";
 import { PlayCanvasOptions, Asset } from "./interfaces";
 import { Assets, Jobs, Branches, Scenes, Apps, Projects } from "./endpoints";
 
@@ -69,7 +68,10 @@ export default class PlayCanvas {
         if (
           asset.parent === parentId &&
           asset.name === name &&
-          this.branchId === Object.values(qs.parse(asset.file.url))[0]
+          this.branchId ===
+            asset.file.url.substr(
+              asset.file.url.indexOf("branchId=") + "branchId=".length
+            )
         )
           return true;
       });
