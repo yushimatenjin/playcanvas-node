@@ -1,6 +1,7 @@
 import axios from "axios";
-import FormData = require("form-data");
-import fs = require("fs");
+import FormData from "form-data";
+import fs from "fs";
+import qs from "qs";
 import { PlayCanvasOptions, Asset } from "./interfaces";
 import { Assets, Jobs, Branches, Scenes, Apps, Projects } from "./endpoints";
 
@@ -54,14 +55,23 @@ export default class PlayCanvas {
     try {
       const assetsList = await this.getListAssets();
       const devDir: Asset = assetsList.find((asset: Asset) => {
-        if (asset.name === remotePath) return true;
+        if (asset.name === remotePath && asset.type === "folder") return true;
       });
 
-      if (!devDir) throw `${remotePath} is not found.`;
+      if (!devDir) {
+        console.error(`${remotePath} is not found.`);
+        return;
+      }
 
       const parentId = devDir.id;
       const targetAsset: Asset = assetsList.find((asset: Asset) => {
-        if (asset.parent === parentId && asset.name === name) return true;
+        if (!asset.file) return false;
+        if (
+          asset.parent === parentId &&
+          asset.name === name &&
+          this.branchId === Object.values(qs.parse(asset.file.url))[0]
+        )
+          return true;
       });
 
       if (targetAsset && targetAsset.hasOwnProperty("id")) {
