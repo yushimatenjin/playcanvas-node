@@ -289,7 +289,7 @@ export default class PlayCanvas {
       form.append("projectId", this.projectId);
       form.append("file", fs.createReadStream(options.path));
       if (options.parent) form.append("parent", options.parent);
-      if (options.preload) form.append("preload", options.preload);
+      if (options.preload) form.append("preload", true);
 
       const response = await axios.post(Assets.CREATE_ASSET(), form, {
         headers: {
