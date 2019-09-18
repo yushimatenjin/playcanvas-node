@@ -55,8 +55,9 @@ const playcanvas = new PlayCanvas(options);
 - [x] List assets
 - [x] Update asset
 
-Assetをアップロード  
-`.js`,`.css`,`.txt`,`.json`,`.html`がアップロードすることができます.  
+Upload  
+This is the supported type. 
+`.js`,`.css`,`.txt`,`.json`,`.html`
 [https://developer.playcanvas.com/en/user-manual/api/asset-create/](https://developer.playcanvas.com/en/user-manual/api/asset-create/)
 
 ```javascript
