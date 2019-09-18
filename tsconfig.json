@@ -5,7 +5,10 @@
     "module": "commonjs",
     "lib": ["es6", "dom"],
     "allowSyntheticDefaultImports": true,
-    "declaration": true
+    "declaration": true,
+    "baseUrl": "./",
+    "paths": {"PlayCanvas": ["node_modules/@types/playcanvas"]},
+    "typeRoots": ["node_modules/@types"]
   },
   "include": ["./src/**/*"]
 }
