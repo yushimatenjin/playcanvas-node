@@ -54,7 +54,7 @@ export default class PlayCanvas {
       const assetsList = await this.getListAssets();
       const devDir: Asset = assetsList.find((asset: Asset) => {
         if (asset.name === remotePath && asset.type === "folder") return true;
-      });
+      }) as Asset;
 
       if (!devDir) {
         console.error(`${remotePath} is not found.`);
@@ -73,7 +73,7 @@ export default class PlayCanvas {
             )
         )
           return true;
-      });
+      }) as Asset;
 
       if (
         typeof targetAsset === "object" &&
@@ -94,7 +94,7 @@ export default class PlayCanvas {
         return res;
       }
     } catch (e) {
-      return e;
+      throw new Error(e);
     }
   }
 
@@ -104,7 +104,7 @@ export default class PlayCanvas {
       const response = await this.listAssets();
       return Object.values(response);
     } catch (e) {
-      return e;
+      throw new Error(e);
     }
   }
 
@@ -117,7 +117,7 @@ export default class PlayCanvas {
       const response = await this.createAsset(options);
       return response;
     } catch (e) {
-      return e;
+      throw new Error(e);
     }
   }
   // Apps
@@ -137,7 +137,7 @@ export default class PlayCanvas {
       );
       return response.data;
     } catch (e) {
-      return e;
+      throw new Error(e);
     }
   }
   //  Get primary app
@@ -152,7 +152,7 @@ export default class PlayCanvas {
 
       return response.data;
     } catch (e) {
-      return e;
+      throw new Error(e);
     }
   }
 
@@ -167,7 +167,7 @@ export default class PlayCanvas {
       );
       return response.data;
     } catch (e) {
-      return e;
+      throw new Error(e);
     }
   }
 
@@ -184,7 +184,7 @@ export default class PlayCanvas {
       });
       return response.data.result;
     } catch (e) {
-      return e;
+      throw new Error(e);
     }
   }
 
@@ -206,7 +206,7 @@ export default class PlayCanvas {
       );
       return response.data.result;
     } catch (e) {
-      return e;
+      throw new Error(e);
     }
   }
 
@@ -226,7 +226,7 @@ export default class PlayCanvas {
       );
       return response.data.result;
     } catch (e) {
-      return e;
+      throw new Error(e);
     }
   }
   /**
@@ -245,7 +245,7 @@ export default class PlayCanvas {
       );
       return response.data.result;
     } catch (e) {
-      return e;
+      throw new Error(e);
     }
   }
   /**
@@ -264,7 +264,7 @@ export default class PlayCanvas {
       );
       return response.data.result;
     } catch (e) {
-      return e;
+      throw new Error(e);
     }
   }
   /**
@@ -298,7 +298,7 @@ export default class PlayCanvas {
       });
       return response.data.result;
     } catch (e) {
-      return e;
+      throw new Error(e);
     }
   }
 
@@ -322,7 +322,7 @@ export default class PlayCanvas {
       });
       return response.data.result;
     } catch (e) {
-      return e;
+      throw new Error(e);
     }
   }
   /**
@@ -338,7 +338,7 @@ export default class PlayCanvas {
       );
       return response.data.result;
     } catch (e) {
-      return e;
+      throw new Error(e);
     }
   }
 
@@ -359,7 +359,7 @@ export default class PlayCanvas {
       );
       return response.data.result;
     } catch (e) {
-      return e;
+      throw new Error(e);
     }
   }
 
@@ -375,7 +375,7 @@ export default class PlayCanvas {
       });
       return response.data;
     } catch (e) {
-      return e;
+      throw new Error(e);
     }
   }
 
@@ -392,7 +392,7 @@ export default class PlayCanvas {
       );
       return response.data.result;
     } catch (e) {
-      return e;
+      throw new Error(e);
     }
   }
 }
