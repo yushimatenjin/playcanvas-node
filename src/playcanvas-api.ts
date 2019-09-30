@@ -108,6 +108,33 @@ export default class PlayCanvas {
     }
   }
 
+  async uploadScript(options: {
+    name: string;
+    script: string;
+    parent?: number;
+    accessToken: string;
+  }) {
+    const form = new FormData();
+    form.append("name", options.name);
+    form.append("projectId", this.projectId);
+    form.append("preload", "true");
+    form.append("file", options.script, {
+      filename: options.name
+    });
+    if (options.parent) form.append("parent", options.parent);
+    try {
+      const response = await axios.post(Assets.CREATE_ASSET(), form, {
+        headers: {
+          Authorization: `Bearer ${this.accessToken}`,
+          "Content-Type": form.getHeaders()["content-type"]
+        }
+      });
+
+      return response.data.result;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
   async createNewAsset(options: {
     name: string;
     path: string;
@@ -288,7 +315,45 @@ export default class PlayCanvas {
       form.append("projectId", this.projectId);
       form.append("file", fs.createReadStream(options.path));
       if (options.parent) form.append("parent", options.parent);
-      if (options.preload) form.append("preload", true);
+      if (options.preload) form.append("preload", "true");
+
+      const response = await axios.post(Assets.CREATE_ASSET(), form, {
+        headers: {
+          Authorization: `Bearer ${this.accessToken}`,
+          "Content-Type": form.getHeaders()["content-type"]
+        }
+      });
+      return response.data.result;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  /**
+   * @function
+   * @name PlayCanvas#createAsset
+   * @description Create a new asset.
+   * @param {String} name
+   * @param {Object} asset
+   * @param {Number} parent
+   * @param {boolean} boolean
+   */
+  async createNewFile(options: {
+    name: string;
+    parent?: number;
+    preload?: boolean;
+    asset: {
+      file: string;
+      script: string;
+    };
+  }) {
+    try {
+      const form = new FormData();
+      form.append("name", options.name);
+      form.append("projectId", this.projectId);
+      form.append("file", "data");
+      if (options.parent) form.append("parent", options.parent);
+      if (options.preload) form.append("preload", "true");
 
       const response = await axios.post(Assets.CREATE_ASSET(), form, {
         headers: {
