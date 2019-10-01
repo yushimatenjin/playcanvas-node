@@ -64,13 +64,19 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h2 id="installation">Installation</h2>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
 				<pre><code class="language-bash">npm install --save playcanvas-node</code></pre>
-				<h2 id="documentation">Documentation</h2>
+				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
+					<h2>Documentation</h2>
+				</a>
 				<ul>
 					<li><a href="https://developer.playcanvas.com/en/user-manual/api/">REST API - PLAYCANVAS MANUAL</a></li>
 				</ul>
-				<h2 id="example">Example</h2>
+				<a href="#example" id="example" style="color: inherit; text-decoration: none;">
+					<h2>Example</h2>
+				</a>
 				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> PlayCanvas <span class="hljs-keyword">from</span> <span class="hljs-string">"playcanvas-node"</span>;
 
 <span class="hljs-keyword">const</span> options = {
@@ -87,14 +93,18 @@
   <span class="hljs-built_in">console</span>.log(res)
 })();
 </code></pre>
-				<h3 id="apps">Apps</h3>
+				<a href="#apps" id="apps" style="color: inherit; text-decoration: none;">
+					<h3>Apps</h3>
+				</a>
 				<ul>
 					<li><input checked="" disabled="" type="checkbox"> Download app</li>
 					<li><input checked="" disabled="" type="checkbox"> Get primary app</li>
 					<li><input checked="" disabled="" type="checkbox"> Get project apps</li>
 					<li><input checked="" disabled="" type="checkbox"> Get app</li>
 				</ul>
-				<h3 id="assets">Assets</h3>
+				<a href="#assets" id="assets" style="color: inherit; text-decoration: none;">
+					<h3>Assets</h3>
+				</a>
 				<ul>
 					<li><input checked="" disabled="" type="checkbox"> Create asset</li>
 				</ul>
@@ -110,23 +120,33 @@
 					<li><input checked="" disabled="" type="checkbox"> List assets</li>
 					<li><input checked="" disabled="" type="checkbox"> Update asset</li>
 				</ul>
-				<p>Assetをアップロード<br><code>.js</code>,<code>.css</code>,<code>.txt</code>,<code>.json</code>,<code>.html</code>がアップロードすることができます.<br><a href="https://developer.playcanvas.com/en/user-manual/api/asset-create/">https://developer.playcanvas.com/en/user-manual/api/asset-create/</a></p>
+				<p>Upload<br>This is the supported type.
+					<code>.js</code>,<code>.css</code>,<code>.txt</code>,<code>.json</code>,<code>.html</code>
+				<a href="https://developer.playcanvas.com/en/user-manual/api/asset-create/">https://developer.playcanvas.com/en/user-manual/api/asset-create/</a></p>
 				<pre><code class="language-javascript">  <span class="hljs-keyword">const</span> playcanvas = <span class="hljs-keyword">new</span> PlayCanvas(options);
   <span class="hljs-keyword">const</span> remotePath = process.env.NODE_ENV === <span class="hljs-string">'development'</span> ? <span class="hljs-string">"dev"</span> : <span class="hljs-string">"build"</span>
   <span class="hljs-keyword">await</span> playcanvas.updateAssets(dev,<span class="hljs-string">"index.html"</span>,<span class="hljs-string">"./dist/index.html"</span>);</code></pre>
-				<h3 id="branches">Branches</h3>
+				<a href="#branches" id="branches" style="color: inherit; text-decoration: none;">
+					<h3>Branches</h3>
+				</a>
 				<ul>
 					<li><input checked="" disabled="" type="checkbox"> List branches</li>
 				</ul>
-				<h3 id="jobs">Jobs</h3>
+				<a href="#jobs" id="jobs" style="color: inherit; text-decoration: none;">
+					<h3>Jobs</h3>
+				</a>
 				<ul>
 					<li><input checked="" disabled="" type="checkbox"> Get job</li>
 				</ul>
-				<h3 id="projects">Projects</h3>
+				<a href="#projects" id="projects" style="color: inherit; text-decoration: none;">
+					<h3>Projects</h3>
+				</a>
 				<ul>
 					<li><input checked="" disabled="" type="checkbox"> Archive project</li>
 				</ul>
-				<h3 id="scenes">Scenes</h3>
+				<a href="#scenes" id="scenes" style="color: inherit; text-decoration: none;">
+					<h3>Scenes</h3>
+				</a>
 				<ul>
 					<li><input checked="" disabled="" type="checkbox"> List scenes</li>
 				</ul>
@@ -145,7 +165,10 @@
 						<a href="modules/_interfaces_.html">"interfaces"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="modules/_playcanvas_.html">"playcanvas"</a>
+						<a href="modules/_playcanvas_api_.html">"playcanvas-<wbr>api"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_utils_urljoin_.html">"utils/urljoin"</a>
 					</li>
 				</ul>
 			</nav>
@@ -168,6 +191,7 @@
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -216,7 +240,7 @@
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>
