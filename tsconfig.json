@@ -6,6 +6,7 @@
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "baseUrl": "./",
+    "lib": ["es6","dom"],
     "paths": {"PlayCanvas": ["node_modules/@types/playcanvas"]},
     "typeRoots": ["node_modules/@types"]
   },
