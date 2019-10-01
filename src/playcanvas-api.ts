@@ -1,5 +1,5 @@
 import axios from "axios";
-import FormData from "form-data";
+import FormData = require("form-data")
 import fs from "fs";
 import { PlayCanvasOptions, Asset } from "./interfaces";
 import { Assets, Jobs, Branches, Scenes, Apps, Projects } from "./endpoints";
