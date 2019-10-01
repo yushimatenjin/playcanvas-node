@@ -74,6 +74,7 @@
 							<h3>Type aliases</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="_interfaces_.html#asset" class="tsd-kind-icon">Asset</a></li>
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported"><a href="_interfaces_.html#file-1" class="tsd-kind-icon">File</a></li>
 								<li class="tsd-kind-type-alias tsd-parent-kind-external-module"><a href="_interfaces_.html#playcanvasoptions" class="tsd-kind-icon">Play<wbr>Canvas<wbr>Options</a></li>
 							</ul>
 						</section>
@@ -88,12 +89,15 @@
 					<div class="tsd-signature tsd-kind-icon">Asset<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/yushimatenjin/playcanvas-node/blob/007b1e2/src/interfaces.ts#L9">interfaces.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/yushimatenjin/playcanvas-node/blob/f3d3ada/src/interfaces.ts#L15">interfaces.ts:15</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>file<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><a href="_interfaces_.html#file-1" class="tsd-signature-type">File</a></h5>
+							</li>
 							<li class="tsd-parameter">
 								<h5>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
 							</li>
@@ -102,6 +106,36 @@
 							</li>
 							<li class="tsd-parameter">
 								<h5>parent<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>type<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="file-1" class="tsd-anchor"></a>
+					<h3>File</h3>
+					<div class="tsd-signature tsd-kind-icon">File<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/yushimatenjin/playcanvas-node/blob/f3d3ada/src/interfaces.ts#L9">interfaces.ts:9</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter">
+								<h5>filename<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>hash<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>size<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></h5>
+							</li>
+							<li class="tsd-parameter">
+								<h5>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
 							</li>
 						</ul>
 					</div>
@@ -112,7 +146,7 @@
 					<div class="tsd-signature tsd-kind-icon">Play<wbr>Canvas<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/yushimatenjin/playcanvas-node/blob/007b1e2/src/interfaces.ts#L1">interfaces.ts:1</a></li>
+							<li>Defined in <a href="https://github.com/yushimatenjin/playcanvas-node/blob/f3d3ada/src/interfaces.ts#L1">interfaces.ts:1</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-type-declaration">
@@ -151,7 +185,10 @@
 						<a href="_interfaces_.html">"interfaces"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_playcanvas_.html">"playcanvas"</a>
+						<a href="_playcanvas_api_.html">"playcanvas-<wbr>api"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_utils_urljoin_.html">"utils/urljoin"</a>
 					</li>
 				</ul>
 			</nav>
@@ -159,6 +196,9 @@
 				<ul class="before-current">
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
 						<a href="_interfaces_.html#asset" class="tsd-kind-icon">Asset</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_interfaces_.html#file-1" class="tsd-kind-icon">File</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
 						<a href="_interfaces_.html#playcanvasoptions" class="tsd-kind-icon">Play<wbr>Canvas<wbr>Options</a>
@@ -180,6 +220,7 @@
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -228,7 +269,7 @@
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
