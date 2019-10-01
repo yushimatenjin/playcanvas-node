@@ -3,6 +3,9 @@
   "description": "PlayCanvas REST API wrapper for Node",
   "version": "1.4.1",
   "author": "yushimatenjin <example@example.com>",
+  "bugs": {
+    "url": "https://github.com/yushimatenjin/playcanvas-node/issues"
+  },
   "dependencies": {
     "axios": "^0.19.0",
     "form-data": "^2.5.1"
@@ -24,6 +27,7 @@
   "files": [
     "built"
   ],
+  "homepage": "https://yushimatenjin.github.io/playcanvas-node/",
   "keywords": [
     "REST API",
     "playcanvas"
@@ -36,7 +40,7 @@
   "repository": "git@github.com:yushimatenjin/playcanvas-node.git",
   "scripts": {
     "build": "tsc",
-    "build:doc": "typedoc",
+    "build:doc": "typedoc && touch docs/.nojekyll",
     "lint": "eslint ./src/*.ts",
     "prepublishOnly": "npm run build",
     "start": "tsc && node built/index.js"
