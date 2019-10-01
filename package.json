@@ -52,7 +52,8 @@
     "build": "tsc",
     "lint": "eslint ./src/*.ts",
     "prepublishOnly": "npm run build",
-    "start": "tsc && node built/index.js"
+    "start": "tsc && node built/index.js",
+    "build:doc": "typedoc"
   },
   "types": "built/playcanvas-api.d.ts"
 }
