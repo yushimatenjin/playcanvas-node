@@ -1,6 +1,4 @@
 src/
-test/
-_test.js
+docs/
 .vscode
-test.js
 built/index*
