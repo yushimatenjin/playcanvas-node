@@ -1,5 +1,5 @@
 import axios from "axios";
-import FormData = require("form-data")
+import FormData = require("form-data");
 import fs from "fs";
 import { PlayCanvasOptions, Asset } from "./interfaces";
 import { Assets, Jobs, Branches, Scenes, Apps, Projects } from "./endpoints";
@@ -124,7 +124,7 @@ export default class PlayCanvas {
       filename: name
     });
     form.append("preload", "true");
-    if (parent) form.append("parent", parent);
+    // if (parent) form.append("parent", parent);
 
     try {
       const response = await axios.post(Assets.CREATE_ASSET(), form, {
@@ -324,7 +324,8 @@ export default class PlayCanvas {
       form.append("projectId", this.projectId);
       form.append("file", fs.createReadStream(path));
       if (parent) form.append("parent", parent);
-      if (preload) form.append("preload", "true");
+      form.append("preload", "true");
+      // if (preload) form.append("preload", "true");
 
       const response = await axios.post(Assets.CREATE_ASSET(), form, {
         headers: {
@@ -367,7 +368,8 @@ export default class PlayCanvas {
       form.append("projectId", this.projectId);
       form.append("file", "data");
       if (parent) form.append("parent", parent);
-      if (preload) form.append("preload", "true");
+      form.append("preload", "true");
+      // if (preload) form.append("preload", "true");
 
       const response = await axios.post(Assets.CREATE_ASSET(), form, {
         headers: {

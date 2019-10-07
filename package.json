@@ -1,7 +1,7 @@
 {
   "name": "playcanvas-node",
   "description": "PlayCanvas REST API wrapper for Node",
-  "version": "1.4.2",
+  "version": "1.4.4",
   "author": "yushimatenjin <example@example.com>",
   "bugs": {
     "url": "https://github.com/yushimatenjin/playcanvas-node/issues"
@@ -11,14 +11,14 @@
     "form-data": "^2.5.1"
   },
   "devDependencies": {
-    "@types/node": "^12.7.8",
+    "@types/node": "^12.7.11",
     "@types/playcanvas": "^1.23.0",
     "@typescript-eslint/eslint-plugin": "^2.3.2",
     "@typescript-eslint/parser": "^2.3.0",
     "eslint": "^6.5.1",
-    "eslint-config-prettier": "^6.3.0",
+    "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-prettier": "^3.1.1",
-    "playcanvas": "^1.23.1",
+    "playcanvas": "^1.23.2",
     "pre-commit": "^1.1.2",
     "prettier": "^1.18.2",
     "typedoc": "^0.15.0",
