@@ -1,10 +1,12 @@
+import { endpointUrlJoin } from '../src/utils/urljoin'
+
 export const Apps = {
-  DONWLAOD_APP: () => `https://playcanvas.com/api/apps/download`,
+  DONWLAOD_APP: () => endpointUrlJoin`/apps/download`,
   GET_PRIMARY_APP: ({ projectId }: { projectId: number }) =>
-    `https://playcanvas.com/api/projects/${projectId}/app`,
+    endpointUrlJoin`/api/projects/${projectId}/app`,
   GET_PROJECT_APPS: ({ projectId }: { projectId: number }) =>
-    `https://playcanvas.com/api/projects/${projectId}/apps`,
-  GET_APP: ({ id }: { id: number }) => `https://playcanvas.com/api/apps/${id}`
+    endpointUrlJoin`/api/projects/${projectId}/apps`,
+  GET_APP: ({ id }: { id: number }) => `/api/apps/${id}`
 };
 
 export const Assets = {
@@ -14,45 +16,41 @@ export const Assets = {
   }: {
     projectId: number;
     branchId: string;
-  }) =>
-    `https://playcanvas.com/api/projects/${projectId}/assets?branchId=${branchId}`,
+  }) => endpointUrlJoin`/projects/${projectId}/assets?branchId=${branchId}`,
   GET_ASSETS: ({ assetId, branchId }: { assetId: number; branchId: string }) =>
-    `https://playcanvas.com/api/assets/${assetId}?branchId=${branchId}`,
+    endpointUrlJoin`/assets/${assetId}?branchId=${branchId}`,
   DELETE_ASSET: ({
     assetId,
     branchId
   }: {
     assetId: number;
     branchId: string;
-  }) => `https://playcanvas.com/api/assets/${assetId}?branchId=${branchId}`,
+  }) => endpointUrlJoin`/assets/${assetId}?branchId=${branchId}`,
   GET_ASSET_FILE: ({
     assetId,
     branchId
   }: {
     assetId: number;
     branchId: string;
-  }) =>
-    `https://playcanvas.com/api/assets/${assetId}/file?branchId=${branchId}`,
-  CREATE_ASSET: () => `https://playcanvas.com/api/assets`,
-  UPDATE_ASSET: ({ assetId }: { assetId: number }) =>
-    `https://playcanvas.com/api/assets/${assetId}`
+  }) => endpointUrlJoin`/assets/${assetId}/file?branchId=${branchId}`,
+  CREATE_ASSET: () => endpointUrlJoin`/assets`,
+  UPDATE_ASSET: ({ assetId }: { assetId: number }) => endpointUrlJoin`/api/assets/${assetId}`
 };
 
 export const Jobs = {
-  GET_JOBS: (id: number) => `https://playcanvas.com/api/jobs/${id}`
+  GET_JOBS: (id: number) => endpointUrlJoin`/api/jobs/${id}`
 };
 
 export const Projects = {
-  ARCHIVE_PROJECT: (id: number) =>
-    `https://playcanvas.com/api/projects/${id}/export`
+  ARCHIVE_PROJECT: (id: number) => endpointUrlJoin`/projects/${id}/export`
 };
 
 export const Scenes = {
   LIST_SCENES: ({ projectId }: { projectId: number }) =>
-    `https://playcanvas.com/api/projects/${projectId}/scenes`
+    endpointUrlJoin`/projects/${projectId}/scenes`
 };
 
 export const Branches = {
   LIST_BRANCHES: ({ projectId }: { projectId: number }) =>
-    `https://playcanvas.com/api/projects/${projectId}/branches`
+    endpointUrlJoin`/projects/${projectId}/branches`
 };
