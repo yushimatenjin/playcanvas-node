@@ -11,17 +11,18 @@
     "form-data": "^3.0.0"
   },
   "devDependencies": {
-    "@types/node": "^12.7.11",
+    "@types/node": "^13.1.1",
     "@types/playcanvas": "^1.23.0",
-    "@typescript-eslint/eslint-plugin": "^2.6.0",
-    "@typescript-eslint/parser": "^2.6.0",
+    "@typescript-eslint/eslint-plugin": "^2.13.0",
+    "@typescript-eslint/parser": "^2.13.0",
     "eslint": "^6.6.0",
-    "eslint-config-prettier": "^6.5.0",
+    "eslint-config-prettier": "^6.8.0",
     "eslint-plugin-prettier": "^3.1.1",
+    "jest": "^24.9.0",
     "playcanvas": "^1.23.4",
     "pre-commit": "^1.1.2",
     "prettier": "^1.18.2",
-    "typedoc": "^0.15.0",
+    "typedoc": "^0.15.6",
     "typescript": "^3.6.4"
   },
   "files": [
@@ -43,7 +44,8 @@
     "build:doc": "typedoc && touch docs/.nojekyll",
     "lint": "eslint ./src/*.ts",
     "prepublishOnly": "npm run build",
-    "start": "tsc && node built/playcanvas-api.js"
+    "start": "tsc && node built/playcanvas-api.js",
+    "test": "jest"
   },
   "types": "built/playcanvas-api.d.ts"
 }
