@@ -1,4 +1,4 @@
-import { endpointUrlJoin } from '../src/utils/urljoin'
+import { endpointUrlJoin } from "../src/utils/urljoin";
 
 export const Apps = {
   DONWLAOD_APP: () => endpointUrlJoin`/apps/download`,
@@ -34,7 +34,8 @@ export const Assets = {
     branchId: string;
   }) => endpointUrlJoin`/assets/${assetId}/file?branchId=${branchId}`,
   CREATE_ASSET: () => endpointUrlJoin`/assets`,
-  UPDATE_ASSET: ({ assetId }: { assetId: number }) => endpointUrlJoin`/api/assets/${assetId}`
+  UPDATE_ASSET: ({ assetId }: { assetId: number }) =>
+    endpointUrlJoin`/api/assets/${assetId}`
 };
 
 export const Jobs = {
