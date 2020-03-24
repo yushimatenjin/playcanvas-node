@@ -1,4 +1,4 @@
-import { endpointUrlJoin } from "../src/utils/urljoin";
+import { endpointUrlJoin } from "./utils/urljoin";
 
 export const Apps = {
   DONWLAOD_APP: () => endpointUrlJoin`/apps/download`,
