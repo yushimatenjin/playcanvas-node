@@ -3,10 +3,10 @@ import { endpointUrlJoin } from "../src/utils/urljoin";
 export const Apps = {
   DONWLAOD_APP: () => endpointUrlJoin`/apps/download`,
   GET_PRIMARY_APP: ({ projectId }: { projectId: number }) =>
-    endpointUrlJoin`/api/projects/${projectId}/app`,
+    endpointUrlJoin`/projects/${projectId}/app`,
   GET_PROJECT_APPS: ({ projectId }: { projectId: number }) =>
-    endpointUrlJoin`/api/projects/${projectId}/apps`,
-  GET_APP: ({ id }: { id: number }) => `/api/apps/${id}`
+    endpointUrlJoin`/projects/${projectId}/apps`,
+  GET_APP: ({ id }: { id: number }) => `/apps/${id}`
 };
 
 export const Assets = {
@@ -35,11 +35,11 @@ export const Assets = {
   }) => endpointUrlJoin`/assets/${assetId}/file?branchId=${branchId}`,
   CREATE_ASSET: () => endpointUrlJoin`/assets`,
   UPDATE_ASSET: ({ assetId }: { assetId: number }) =>
-    endpointUrlJoin`/api/assets/${assetId}`
+    endpointUrlJoin`/assets/${assetId}`
 };
 
 export const Jobs = {
-  GET_JOBS: (id: number) => endpointUrlJoin`/api/jobs/${id}`
+  GET_JOBS: (id: number) => endpointUrlJoin`/jobs/${id}`
 };
 
 export const Projects = {
