@@ -1,7 +1,7 @@
 {
   "name": "playcanvas-node",
   "description": "PlayCanvas REST API wrapper for Node",
-  "version": "1.4.8",
+  "version": "1.4.9",
   "author": "yushimatenjin <example@example.com>",
   "bugs": {
     "url": "https://github.com/yushimatenjin/playcanvas-node/issues"
