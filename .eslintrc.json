@@ -1,17 +1,17 @@
 {
-  "extends": [
-    "eslint:recommended",
-    "plugin:prettier/recommended"
-  ],
-  "plugins": [
-    "@typescript-eslint"
-  ],
+  "root": true,
+  "extends": ["eslint:recommended", "plugin:prettier/recommended"],
+  "plugins": ["@typescript-eslint"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "sourceType": "module",
     "project": "./tsconfig.json"
   },
   "rules": {
+    "prettier/prettier": [
+      "error",
+      { "singleQuote": false, "semi": true, "trailingComma": "none" }
+    ],
     "no-console": "off",
     "no-undef": "off",
     "no-unused-vars": "off",
