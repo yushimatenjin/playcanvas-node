@@ -16,7 +16,8 @@ export const Assets = {
   }: {
     projectId: number;
     branchId: string;
-  }) => endpointUrlJoin`/projects/${projectId}/assets?branchId=${branchId}`,
+  }) =>
+    endpointUrlJoin`/projects/${projectId}/assets?branchId=${branchId}&limit=${Number.MAX_SAFE_INTEGER}`,
   GET_ASSETS: ({ assetId, branchId }: { assetId: number; branchId: string }) =>
     endpointUrlJoin`/assets/${assetId}?branchId=${branchId}`,
   DELETE_ASSET: ({
