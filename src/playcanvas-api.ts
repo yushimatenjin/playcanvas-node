@@ -57,8 +57,12 @@ export default class PlayCanvas {
       }) as Asset;
 
       if (!devDir) {
-        console.error(`${remotePath} is not found.`);
-        return;
+        await this.createAsset({
+          name: name,
+          isFolder: true
+        });
+        console.log(`${remotePath} was created.`);
+        // return;
       }
 
       const parentId = devDir.id;
@@ -305,27 +309,37 @@ export default class PlayCanvas {
    * @param {String} name
    * @param {String} path
    * @param {Number} parent
-   * @param {boolean} boolean
+   * @param {Boolean} preload
+   * @param {Boolean} isFolder
    */
   private async createAsset({
     name,
     path,
     parent,
-    preload
+    preload,
+    isFolder = false
   }: {
     name: string;
-    path: string;
+    path?: string;
     parent?: number;
     preload?: boolean;
+    isFolder?: boolean;
   }) {
     try {
       const form = new FormData();
       form.append("name", name);
       form.append("projectId", this.projectId);
-      form.append("file", fs.createReadStream(path));
+      if (isFolder) {
+        form.append("type", "folder");
+      } else {
+        form.append("file", fs.createReadStream(path));
+      }
       if (parent) form.append("parent", parent);
-      form.append("preload", "true");
-      // if (preload) form.append("preload", "true");
+      if (preload) {
+        form.append("preload", "true");
+      } else {
+        form.append("preload", "false");
+      }
 
       const response = await axios.post(Assets.CREATE_ASSET(), form, {
         headers: {
