@@ -51,7 +51,7 @@ export default class PlayCanvas {
 
   async updateAssets(remotePath: string, name: string, path: string) {
     try {
-      const assetsList = await this.getListAssets();
+      let assetsList = await this.getListAssets();
       let devDir: Asset = assetsList.find((asset: Asset) => {
         if (asset.name === remotePath && asset.type === "folder") return true;
       }) as Asset;
@@ -59,15 +59,15 @@ export default class PlayCanvas {
 
       if (!devDir) {
         const res = await this.createAsset({
-          name: name,
+          name: remotePath,
           isFolder: true
         });
         parentId = res.id;
+        assetsList = await this.getListAssets();
         console.log(`${remotePath} was created.`);
       } else {
         parentId = devDir.id;
       }
-
       const targetAsset: Asset = assetsList.find((asset: Asset) => {
         if (!asset.file) return false;
         if (
@@ -80,7 +80,6 @@ export default class PlayCanvas {
         )
           return true;
       }) as Asset;
-
       if (
         typeof targetAsset === "object" &&
         targetAsset !== null &&
@@ -349,7 +348,8 @@ export default class PlayCanvas {
           "Content-Type": form.getHeaders()["content-type"]
         }
       });
-      return response.data.result;
+
+      return response.data;
     } catch (e) {
       throw new Error(e);
     }

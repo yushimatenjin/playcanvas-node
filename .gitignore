@@ -92,3 +92,4 @@ typings/
 built
 yarn.lock
 playcanvas.json
+.DS_Store
