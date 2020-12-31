@@ -52,20 +52,22 @@ export default class PlayCanvas {
   async updateAssets(remotePath: string, name: string, path: string) {
     try {
       const assetsList = await this.getListAssets();
-      const devDir: Asset = assetsList.find((asset: Asset) => {
+      let devDir: Asset = assetsList.find((asset: Asset) => {
         if (asset.name === remotePath && asset.type === "folder") return true;
       }) as Asset;
+      let parentId;
 
       if (!devDir) {
-        await this.createAsset({
+        const res = await this.createAsset({
           name: name,
           isFolder: true
         });
+        parentId = res.id;
         console.log(`${remotePath} was created.`);
-        // return;
+      } else {
+        parentId = devDir.id;
       }
 
-      const parentId = devDir.id;
       const targetAsset: Asset = assetsList.find((asset: Asset) => {
         if (!asset.file) return false;
         if (
