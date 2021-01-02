@@ -3,6 +3,8 @@ import FormData = require("form-data");
 import * as fs from "fs";
 import { PlayCanvasOptions, Asset } from "./interfaces";
 import { Assets, Jobs, Branches, Scenes, Apps, Projects } from "./endpoints";
+const Path = require("path");
+
 /**
  * @name PlayCanvas
  * @description PlayCanvasのREST APIを操作
@@ -97,6 +99,86 @@ export default class PlayCanvas {
           parent: parentId
         });
         return res;
+      }
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  async findDirectory(name: string) {
+    let assetsList = await this.getListAssets();
+    let devDir: Asset = assetsList.find((asset: Asset) => {
+      if (asset.name === name && asset.type === "folder") return true;
+    }) as Asset;
+    return devDir;
+  }
+  // experimental
+  async updateAssetsStrict(remotePath, name, filePath, dest) {
+    try {
+      const distPath = Path.resolve(".", dest);
+      const relativeDirectoryPath = Path.dirname(filePath).replace(
+        distPath,
+        ""
+      );
+      const dirs = relativeDirectoryPath.split("/").filter((dir) => !!dir);
+      let parentId;
+      let devDir = await this.findDirectory(remotePath);
+
+      if (!devDir) {
+        const res = await this.createAsset({
+          name: remotePath,
+          isFolder: true
+        });
+        parentId = res.id;
+      } else {
+        parentId = devDir.id;
+      }
+
+      for (let dirName of dirs) {
+        let dir = await this.findDirectory(dirName);
+
+        if (!dir) {
+          const res = await this.createAsset({
+            name: dirName,
+            isFolder: true,
+            parent: parentId
+          });
+          parentId = res.id;
+        } else {
+          parentId = dir.id;
+        }
+
+        const assetsList = await this.getListAssets();
+        const targetAsset: Asset = assetsList.find((asset: Asset) => {
+          if (!asset.file) return false;
+          if (
+            asset.parent === parentId &&
+            asset.name === name &&
+            this.branchId ===
+              asset.file.url.substr(
+                asset.file.url.indexOf("branchId=") + "branchId=".length
+              )
+          )
+            return true;
+        }) as Asset;
+        if (
+          typeof targetAsset === "object" &&
+          targetAsset !== null &&
+          targetAsset.id
+        ) {
+          const res = await this.updateAsset({
+            assetId: targetAsset.id,
+            path: filePath
+          });
+          return res;
+        } else {
+          const res = await this.createNewAsset({
+            name: name,
+            path: filePath,
+            parent: parentId
+          });
+          return res;
+        }
       }
     } catch (e) {
       throw new Error(e);
