@@ -317,7 +317,7 @@ export default class PlayCanvas {
     name,
     path,
     parent,
-    preload,
+    preload = true,
     isFolder = false
   }: {
     name: string;
@@ -367,7 +367,7 @@ export default class PlayCanvas {
   async createNewFile({
     name,
     parent,
-    preload,
+    preload = true,
     asset
   }: {
     name: string;
@@ -384,8 +384,11 @@ export default class PlayCanvas {
       form.append("projectId", this.projectId);
       form.append("file", "data");
       if (parent) form.append("parent", parent);
-      form.append("preload", "true");
-      // if (preload) form.append("preload", "true");
+      if (preload) {
+        form.append("preload", "true");
+      } else {
+        form.append("preload", "false");
+      }
 
       const response = await axios.post(Assets.CREATE_ASSET(), form, {
         headers: {
