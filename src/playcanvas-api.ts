@@ -211,6 +211,8 @@ export default class PlayCanvas {
       filename: name
     });
     form.append("preload", "true");
+    form.append("branchId", this.branchId);
+
     // if (parent) form.append("parent", parent);
 
     try {
@@ -412,6 +414,7 @@ export default class PlayCanvas {
       const form = new FormData();
       form.append("name", name);
       form.append("projectId", this.projectId);
+      form.append("branchId", this.branchId);
       if (isFolder) {
         form.append("type", "folder");
       } else {
@@ -465,6 +468,7 @@ export default class PlayCanvas {
       form.append("name", name);
       form.append("projectId", this.projectId);
       form.append("file", "data");
+      form.append("branchId", this.branchId);
       if (parent) form.append("parent", parent);
       if (preload) {
         form.append("preload", "true");
