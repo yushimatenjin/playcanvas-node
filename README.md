@@ -16,8 +16,8 @@ import PlayCanvas from "playcanvas-node";
 
 const options = {
   accessToken: "xxxxxxxxxxxxxxxx",
-  scenes: [xxxxxxx],
-  projectId: xxxxx,
+  scenes: [000000,111111],
+  projectId: 000000,
   branchId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx",
   projectName: "xxxxxx"
 };
