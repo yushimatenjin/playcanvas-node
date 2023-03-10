@@ -543,7 +543,7 @@ export default class PlayCanvas {
           headers: this.headers
         }
       );
-      return response.data.result;
+      return response.data;
     } catch (e) {
       throw new Error(e);
     }
